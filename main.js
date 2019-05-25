@@ -1,6 +1,6 @@
-var roleHarvester = require('Roles/harvester');
-var roleUpgrader = require('Roles/upgrader');
-var roleBuilder = require('Roles/builder');
+var roleHarvester = require('harvester');
+var roleUpgrader = require('upgrader');
+var roleBuilder = require('builder');
 
 module.exports.loop = function () {
     for(var name in Memory.creeps) {
