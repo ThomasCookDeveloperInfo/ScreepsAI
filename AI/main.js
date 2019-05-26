@@ -2,7 +2,7 @@ var roleHarvester = require('harvester');
 var roleUpgrader = require('upgrader');
 var roleBuilder = require('builder');
 
-const var MAX_HARVESTERS_PER_ROOM = 10;
+const MAX_HARVESTERS_PER_ROOM = 10;
 
 module.exports.loop = function () {
     for(var name in Memory.creeps) {
