@@ -4,16 +4,15 @@ var roleBuilder = require('builder');
 
 const MAX_HARVESTER_TEAMS_PER_ROOM = 2;
 const MAX_HARVESTERS_PER_ROOM = 10;
-var isInitialized = false;
 
 module.exports.loop = function () {
     function initialize() {
         Memory.harvesterTeams = [];
-        isInitialized = true;
+        Memory.isInitialized = true;
         console.log("Initialized");
     }
 
-    if (!isInitialized) {
+    if (!Memory.isInitialized) {
         initialize();
     }
 
