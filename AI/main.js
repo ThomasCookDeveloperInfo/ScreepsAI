@@ -2,15 +2,28 @@ var roleHarvester = require('harvester');
 var roleUpgrader = require('upgrader');
 var roleBuilder = require('builder');
 
-const MAX_HARVESTERS_PER_ROOM = 10;
+const MAX_HARVESTER_TEAMS_PER_ROOM = 2;
+var isInitialized = false;
 
 module.exports.loop = function () {
+    function initialize() {
+        Memory.harvesterTeams = [];
+        isInitialized = true;
+    }
+
+    if (!isInitialized) {
+        initialize();
+    }
+
     for(var name in Memory.creeps) {
         if(!Game.creeps[name]) {
             delete Memory.creeps[name];
             console.log('Clearing non-existing creep memory:', name);
         }
     }
+
+    var harvesterTeams = Memory.harvesterTeams;
+    console.log(harvesterTeams);
 
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     console.log('Harvesters: ' + harvesters.length);
