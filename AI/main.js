@@ -16,18 +16,18 @@ module.exports.loop = function () {
         initialize();
     }
 
-    for(var name in Memory.creeps) {
-        if(!Game.creeps[name]) {
-            delete Memory.creeps[name];
-            console.log('Clearing non-existing creep memory:', name);
+    for var harvesterTeam in Memory.harvesterTeams) {
+        for (var name in harvesterTeam) {
+            if(!Game.creeps[name]) {
+                delete Memory.harvesterTeams[harvesterTeam][name];
+                console.log('Clearing non-existing creep memory:', name);
+            }
         }
     }
 
     var harvesterTeams = Memory.harvesterTeams;
-    console.log(harvesterTeams);
 
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-    console.log('Harvesters: ' + harvesters.length);
 
     if(harvesters.length < MAX_HARVESTERS_PER_ROOM) {
         var newName = 'Harvester' + Game.time;
