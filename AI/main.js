@@ -10,6 +10,7 @@ module.exports.loop = function () {
     function initialize() {
         Memory.harvesterTeams = [];
         isInitialized = true;
+        console.log("Initialized");
     }
 
     if (!isInitialized) {
